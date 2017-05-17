@@ -1,19 +1,11 @@
 # Sequence
 
-**TODO: Add description**
+## Create Release
+* `mix do deps.get, deps.compile`
+* `mix release`
 
-## Installation
-
-If [available in Hex](https://hex.pm/docs/publish), the package can be installed
-by adding `sequence` to your list of dependencies in `mix.exs`:
-
-```elixir
-def deps do
-  [{:sequence, "~> 0.1.0"}]
-end
-```
-
-Documentation can be generated with [ExDoc](https://github.com/elixir-lang/ex_doc)
-and published on [HexDocs](https://hexdocs.pm). Once published, the docs can
-be found at [https://hexdocs.pm/sequence](https://hexdocs.pm/sequence).
-
+## Deploy
+* `ssh localhost mkdir ~/deploy`
+* `scp rel/sequence/releases/0.1.0/sequence.tar.gz localhost:deploy`
+* `ssh localhost tar -x -f ~/deploy/sequence.tar.gz -C ~/deploy`
+* Start it in a console `ssh -t localhost ~/deploy/bin/sequence console`

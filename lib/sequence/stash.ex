@@ -1,6 +1,8 @@
 defmodule Sequence.Stash do
   use GenServer
 
+  @vsn "0"
+
   # External API
 
   def start_link(current_number) do

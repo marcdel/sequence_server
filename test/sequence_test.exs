@@ -2,24 +2,26 @@ defmodule SequenceTest do
   use ExUnit.Case
 
   setup do
-    Sequence.Server.set_number(1)
+    Sequence.Server.clear
   end
 
-  test "starts at 1" do
-    assert Sequence.Server.next_number == 1
+  test "starts at 0" do
+    assert Sequence.Server.next_number == 0
   end
 
   test "increment by 1" do
+    assert Sequence.Server.next_number == 0
     assert Sequence.Server.next_number == 1
     assert Sequence.Server.next_number == 2
-    assert Sequence.Server.next_number == 3
   end
 
-  test "increment by an amount" do
+  test "increment sets the delta" do
     Sequence.Server.increment_number(10)
-    assert Sequence.Server.next_number == 11
+    assert Sequence.Server.next_number == 10
+    assert Sequence.Server.next_number == 20
 
-    Sequence.Server.increment_number(3)
-    assert Sequence.Server.next_number == 15
+    Sequence.Server.increment_number(5)
+    assert Sequence.Server.next_number == 35
+    assert Sequence.Server.next_number == 40
   end
 end

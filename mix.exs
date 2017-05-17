@@ -15,8 +15,12 @@ defmodule Sequence.Mixfile do
   # Type "mix help compile.app" for more information
   def application do
     # Specify extra applications you'll use from Erlang/Elixir
-    [extra_applications: [:logger],
-     mod: {Sequence, []}]
+    [
+      extra_applications: [:logger],
+      mod: {Sequence, []},
+      env: [initial_value: 456],
+      registered: [Sequence.Server]
+    ]
   end
 
   # Dependencies can be Hex packages:
